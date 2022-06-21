@@ -23,12 +23,3 @@ def get_credentials():
     cred = json.load(f)
     print(cred)
     return cred
-
-""" 
-    Caso o arquivo credentials.json não existir
-    você precisa criar com o seguinte json:
-    {
-        "public_key": "SUA_PUBLIC_KEY_AQUI",
-        "access_token": "SEU_ACCESS_TOKEN_AQUI"
-    }
-"""
