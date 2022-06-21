@@ -30,5 +30,3 @@ def verify_credentials():
             json.dump({"public_key": "YOUR_PUBLIC_KEY_HERE", "access_token": "YOUR_ACCESS_TOKEN_HERE"}, f, indent=2)
             print("Configure suas credenciais no arquivo credentials.json")
             exit()
-
-verify_credentials()

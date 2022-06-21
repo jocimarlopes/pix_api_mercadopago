@@ -29,9 +29,8 @@ def get_payment(price, description):
     }
     payment_response = sdk.payment().create(payment_data)
     payment = payment_response["response"]
-    qr = payment['point_of_interaction']['transaction_data']['qr_code']
-    qr_b64 = payment['point_of_interaction']['transaction_data']['qr_code_base64']
-    return {'clipboard': str(qr), 'qrcode': 'data:image/jpeg;base64,{}'.format(qr_b64), 'id': payment['id']}
+    data = payment['point_of_interaction']['transaction_data']
+    return {'clipboard': str(data['qr_code']), 'qrcode': 'data:image/jpeg;base64,{}'.format(data['qr_code_base64']), 'id': payment['id']}
 
 def verify_payment(payment_id):
     sdk = mercadopago.SDK(credentials['access_token'])
