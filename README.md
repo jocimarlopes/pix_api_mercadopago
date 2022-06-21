@@ -1,6 +1,5 @@
 # Pix API Mercado Pago
 ### Api para receber pagamentos Pix via Mercado Pago
-#
 #### Configurar
 Para configurar precisamos das credenciais do Mercado Pago, `public_key` e `access_token`, iremos adicionar elas no arquivo **credentials.json** que se encontra na raíz do projeto.
 #### Rotas 
