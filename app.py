@@ -10,7 +10,7 @@ def get_payment():
     print(data)
     try:
         if data['price'] and data['description']:
-            res = payments.get_qr_info(data['price'], data['description'])
+            res = payments.get_payment(data['price'], data['description'])
             return jsonify(res)
     except:
         return make_response('Bad Request', 400)

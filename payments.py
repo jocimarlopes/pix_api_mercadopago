@@ -3,7 +3,7 @@ import helpers
 
 credentials = helpers.get_credentials()
 
-def get_qr_info(price, description):
+def get_payment(price, description):
     sdk = mercadopago.SDK(credentials['access_token'])
     payment_data = {
         "transaction_amount": float(price),
