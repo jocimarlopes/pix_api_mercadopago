@@ -36,7 +36,6 @@ def verify_payment(payment_id):
     sdk = mercadopago.SDK(credentials['access_token'])
     payment_response = sdk.payment().get(int(payment_id))
     payment = payment_response["response"]
-    print(payment)
     status = payment['status']
     detail = payment['status_detail']
     return {'id': payment_id, 'status': status, 'status_detail': detail}

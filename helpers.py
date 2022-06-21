@@ -9,7 +9,6 @@ def get_name():
     date = str(datetime.datetime.now())
     b64 = base64.b64encode(date.encode()).decode()
     name = ((b64.replace('=', '')) + '.png').lower()
-    print(name)
     return name
 
 def get_qrcode(qr):

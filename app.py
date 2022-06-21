@@ -7,7 +7,6 @@ app = Flask(__name__)
 @app.route('/get_payment')
 def get_payment():
     data = request.json
-    print(data)
     try:
         if data['price'] and data['description']:
             res = payments.get_payment(data['price'], data['description'])
@@ -18,7 +17,6 @@ def get_payment():
 @app.route('/verify_payment')
 def verify_payment():
     data = request.json
-    print(data)
     try:
         if data['id']:
             res = payments.verify_payment(data['id'])
