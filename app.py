@@ -9,8 +9,8 @@ def get_payment():
     print(data)
     try:
         if data['price'] and data['description']:
-            response = payments.get_qr_info(data['price'], data['description'])
-            return jsonify(response)
+            res = payments.get_qr_info(data['price'], data['description'])
+            return jsonify(res)
     except:
         return make_response('Bad Request', 400)
 
@@ -20,8 +20,8 @@ def verify_payment():
     print(data)
     try:
         if data['id']:
-            response = payments.verify_payment(data['id'])
-            return jsonify(response) 
+            res = payments.verify_payment(data['id'])
+            return jsonify(res) 
     except:
         return make_response('Bad Request', 400)
 
