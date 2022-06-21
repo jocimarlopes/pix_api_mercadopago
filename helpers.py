@@ -3,6 +3,7 @@ from PIL import Image
 import datetime
 import base64
 import json
+from os.path import exists
 
 def get_name():
     date = str(datetime.datetime.now())
@@ -21,5 +22,13 @@ def get_qrcode(qr):
 def get_credentials():
     f = open('credentials.json')
     cred = json.load(f)
-    print(cred)
     return cred
+
+def verify_credentials():
+    if not exists('./credentials.json'):
+        with open('credentials.json', 'w') as f:
+            json.dump({"public_key": "YOUR_PUBLIC_KEY_HERE", "access_token": "YOUR_ACCESS_TOKEN_HERE"}, f, indent=2)
+            print("Configure suas credenciais no arquivo credentials.json")
+            exit()
+
+verify_credentials()

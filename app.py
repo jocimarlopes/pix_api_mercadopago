@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, make_response, request
 import payments
+import helpers
 
 app = Flask(__name__)
 
@@ -26,4 +27,5 @@ def verify_payment():
         return make_response('Bad Request', 400)
 
 if __name__ == '__main__':
+    helpers.verify_credentials()
     app.run(debug=True)
