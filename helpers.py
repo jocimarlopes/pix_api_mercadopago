@@ -19,6 +19,14 @@ def get_qrcode(qr):
     im.show()
 
 def get_credentials():
+    """ 
+        Caso o arquivo credentials.json não existir
+        você precisa criar com o seguinte json:
+        {
+            "public_key": "SUA_PUBLIC_KEY_AQUI",
+            "access_token": "SEU_ACCESS_TOKEN_AQUI"
+        }
+    """
     f = open('credentials.json')
     cred = json.load(f)
     print(cred)
