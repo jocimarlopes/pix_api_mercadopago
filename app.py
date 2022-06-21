@@ -1,0 +1,29 @@
+from flask import Flask, jsonify, make_response, request
+import payments
+
+app = Flask(__name__)
+
+@app.route('/get_payment')
+def get_payment():
+    data = request.json
+    print(data)
+    try:
+        if data['price'] and data['description']:
+            response = payments.get_qr_info(data['price'], data['description'])
+            return jsonify(response)
+    except:
+        return make_response('Bad Request', 400)
+
+@app.route('/verify_payment')
+def verify_payment():
+    data = request.json
+    print(data)
+    try:
+        if data['id']:
+            response = payments.verify_payment(data['id'])
+            return jsonify(response) 
+    except:
+        return make_response('Bad Request', 400)
+
+if __name__ == '__main__':
+    app.run(debug=True)
