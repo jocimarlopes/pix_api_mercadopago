@@ -19,13 +19,20 @@ def get_qrcode(qr):
     im.show()
 
 def get_credentials():
-    f = open('credentials.json')
-    cred = json.load(f)
-    return cred
+    if exists('./credentials.json'):
+        f = open('credentials.json')
+        cred = json.load(f)
+        return cred
 
 def verify_credentials():
     if not exists('./credentials.json'):
         with open('credentials.json', 'w') as f:
             json.dump({"public_key": "YOUR_PUBLIC_KEY_HERE", "access_token": "YOUR_ACCESS_TOKEN_HERE"}, f, indent=2)
             print("Configure suas credenciais no arquivo credentials.json")
+            exit()
+    if exists('./credentials.json'):
+        l = open('./credentials.json')
+        data = json.load(l)
+        if 'YOUR_PUBLIC_KEY_HERE' in data['public_key'] or 'YOUR_ACCESS_TOKEN_HERE' in data['access_token']:
+            print('Configure suas credenciais no arquivo credentials.json')
             exit()
